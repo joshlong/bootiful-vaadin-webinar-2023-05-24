@@ -1,4 +1,4 @@
-package bootiful.vaadin;
+package com.example.vaadin;
 
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
@@ -25,51 +25,54 @@ public class VaadinApplication {
     }
 
     @Bean
-    ApplicationRunner applicationRunner(PostClient client, PostRepository repository) {
+    ApplicationRunner applicationRunner(PostApiClient client,
+                                        PostRepository repository) {
         return args -> {
             repository.deleteAll();
-            repository.saveAll(client.getPosts());
+            repository.saveAll(client.getAllPosts());
+            repository.findAll().forEach(System.out::println);
         };
     }
 
     @Bean
-    PostClient postClient(WebClient.Builder builder) {
-        var wc = builder.baseUrl("https://jsonplaceholder.typicode.com/").build();
+    PostApiClient postApiClient(WebClient.Builder builder) {
+        var wc = builder.baseUrl("https://jsonplaceholder.typicode.com").build();
         var wca = WebClientAdapter.forClient(wc);
         return HttpServiceProxyFactory
                 .builder(wca)
                 .build()
-                .createClient(PostClient.class);
+                .createClient(PostApiClient.class);
     }
+
 }
+
 
 @Route("")
 class PostsView extends VerticalLayout {
 
     PostsView(PostRepository repository) {
 
-        var h1 = new H1("Posts from your favorite news: an AI");
+        var h1 = new H1("Posts by your favorite AI");
 
         var grid = new Grid<>(Post.class);
         grid.setItems(repository.findAll());
-        grid.addColumn(Post::postId).setHeader("ID");
+        grid.addColumn(Post::postId).setHeader("Post ID");
         grid.addColumn(Post::title).setHeader("Title");
-        grid.addColumn(Post::body).setHeader("Post");
+        grid.addColumn(Post::body).setHeader("Text");
 
         add(h1, grid);
     }
 }
 
+interface PostApiClient {
+
+    @GetExchange("/posts")
+    Collection<Post> getAllPosts();
+}
 
 interface PostRepository extends ListCrudRepository<Post, Integer> {
 }
 
+// look ma, no Lombok!
 record Post(@Id Integer postId, String title, String body) {
 }
-
-interface PostClient {
-
-    @GetExchange("/posts")
-    Collection<Post> getPosts();
-}
-

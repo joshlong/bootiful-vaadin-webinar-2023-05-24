@@ -1,4 +1,4 @@
-package bootiful.vaadin;
+package com.example.vaadin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.devtools.restart.RestartScope;
@@ -14,13 +14,14 @@ public class TestVaadinApplication {
     @ServiceConnection
     @RestartScope
     PostgreSQLContainer postgreSQLContainer() {
-        return new PostgreSQLContainer("postgres");
+        return new PostgreSQLContainer("postgres:15.1-alpine");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] arrrrghImAPirate) {
         SpringApplication
                 .from(VaadinApplication::main)
                 .with(TestVaadinApplication.class)
-                .run(args);
+                .run(arrrrghImAPirate);
+
     }
 }

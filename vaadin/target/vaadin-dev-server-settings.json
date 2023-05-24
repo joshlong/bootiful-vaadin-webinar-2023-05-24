@@ -1,0 +1,18 @@
+{
+  "frontendFolder": "/Users/jlong/Downloads/vaadin/./frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "/Users/jlong/Downloads/vaadin/./frontend/generated/jar-resources",
+  "staticOutput": "/Users/jlong/Downloads/vaadin/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "/Users/jlong/Downloads/vaadin/target/classes/META-INF/VAADIN/config",
+  "frontendBundleOutput": "/Users/jlong/Downloads/vaadin/target/classes/META-INF/VAADIN/webapp",
+  "devBundleOutput": "/Users/jlong/Downloads/vaadin/src/main/dev-bundle/webapp",
+  "devBundleStatsOutput": "/Users/jlong/Downloads/vaadin/src/main/dev-bundle/config",
+  "jarResourcesFolder": "/Users/jlong/Downloads/vaadin/./frontend/generated/jar-resources",
+  "generatedFlowImportsFolder": "target/frontend",
+  "themeName": "",
+  "clientServiceWorkerSource": "/Users/jlong/Downloads/vaadin/target/sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}

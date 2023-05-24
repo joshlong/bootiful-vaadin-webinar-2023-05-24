@@ -1,9 +1,9 @@
 package bootiful.vaadin;
 
-import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.Route;
+//import com.vaadin.flow.component.grid.Grid;
+//import com.vaadin.flow.component.html.H1;
+//import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+//import com.vaadin.flow.router.Route;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -55,6 +55,7 @@ interface PostClient {
     @GetExchange("/posts")
     Set<Post> getPosts();
 }
+/*
 
 @Route("")
 class PostsView extends VerticalLayout {
@@ -72,4 +73,4 @@ class PostsView extends VerticalLayout {
 
         add(h1, grid);
     }
-}
+}*/
